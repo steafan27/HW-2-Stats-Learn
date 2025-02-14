@@ -1,5 +1,5 @@
-print("Hello World")
 library(mlbench)
+data("Ionosphere")
 summary(Ionosphere)
 head(Ionosphere)
 df <- Ionosphere
