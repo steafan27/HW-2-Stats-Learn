@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Steafan Steinocher ID 1554129">
+
+<title>HW 2 Stats Learn, Date: 02/20/25</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="HW2index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="HW2index_files/libs/quarto-html/quarto.js"></script>
+<script src="HW2index_files/libs/quarto-html/popper.min.js"></script>
+<script src="HW2index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="HW2index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="HW2index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="HW2index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="HW2index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="HW2index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="HW2index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">HW 2 Stats Learn, Date: 02/20/25</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Steafan Steinocher ID 1554129 </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-following-question-1-is-in-regards-to-this-table" class="level2">
+<h2 class="anchored" data-anchor-id="the-following-question-1-is-in-regards-to-this-table">The following Question 1 is in regards to this table:</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Obs</th>
+<th>X1</th>
+<th>X2</th>
+<th>X3</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>-1</td>
+<td>Blue</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>Blue</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>Red</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>-1</td>
+<td>Red</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>-1</td>
+<td>Blue</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>Red</td>
+</tr>
+</tbody>
+</table>
+<section id="question-1a" class="level3">
+<h3 class="anchored" data-anchor-id="question-1a">Question 1a:</h3>
+<p>The nearest neighbor to any K = 1 observation is the observation itself so in this case Blue with a misclassification rate of 0%, and this would be the case for each of the other observations.</p>
+</section>
+<section id="question-1b" class="level3">
+<h3 class="anchored" data-anchor-id="question-1b">Question 1b:</h3>
+<p>Where K = 3, there is a misclassification of 1/6.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Obs</td>
+<td>X1</td>
+<td>X2</td>
+<td>X3</td>
+<td>Y</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Blue</td>
+<td>Red</td>
+<td>Red</td>
+<td>Red</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Red</td>
+<td>Blue</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Red</td>
+<td>Red</td>
+<td>Blue</td>
+<td>Red</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Red</td>
+<td>Blue</td>
+<td>Red</td>
+<td>Red</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Red</td>
+<td>Blue</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Red</td>
+<td>Red</td>
+<td>Blue</td>
+<td>Red</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="question-1c" class="level3">
+<h3 class="anchored" data-anchor-id="question-1c">Question 1c:</h3>
+<section id="question-1-c-i" class="level4">
+<h4 class="anchored" data-anchor-id="question-1-c-i">Question 1 c i:</h4>
+<p>Because our point of interest is (0,0,0) the distance of each observation from our point of interest is simply the magnitude of the observation.&nbsp;</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Obs</td>
+<td>Distance from (0,0,0)</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><span class="math inline">\(\sqrt{6}\)</span></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><span class="math inline">\(\sqrt{10}\)</span></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><span class="math inline">\(\sqrt{5}\)</span></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><span class="math inline">\(\sqrt{5}\)</span></td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td><span class="math inline">\(\sqrt{18}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="question-1-c-ii" class="level4">
+<h4 class="anchored" data-anchor-id="question-1-c-ii">Question 1 c ii:</h4>
+<ul>
+<li>For K = 1 the nearest neighbor prediction could be Red or Blue as they are equidistant from the initial point.</li>
+</ul>
+</section>
+<section id="question-1-c-iii" class="level4">
+<h4 class="anchored" data-anchor-id="question-1-c-iii">Question 1 c iii:</h4>
+<ul>
+<li>For K = 3 the nearest neighbor prediction would be Blue as the majority of points nearest to our point of interest are Blue.</li>
+</ul>
+</section>
+<section id="question-1-c-iv" class="level4">
+<h4 class="anchored" data-anchor-id="question-1-c-iv">Question 1 c iv:</h4>
+<ul>
+<li>For K = 5 the nearest neighbor prediction would be Blue because the majority of points nearest to our point of interest are Blue.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2:</h2>
+<section id="question-2-a" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-a">Question 2 a:</h3>
+<p>The validation set approach splits the data set into two parts.</p>
+<ul>
+<li><p>Training set which is often seen as 70% of the data set.</p></li>
+<li><p>Validation set, which is used to evaluate the models performance which is often roughly 30% of the data set.</p></li>
+</ul>
+<p>A disadvantage to the validation set approach is Data inefficiency, not as much data is used to train a model that adopts this approach.</p>
+</section>
+<section id="question-2-b" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-b">Question 2 b:</h3>
+<p>Leave one out cross validation works as follows:</p>
+<ul>
+<li><p>Treat that observation as the validation set.</p></li>
+<li><p>Train the model on the remaining (n-1) observations, hence leave one out.</p></li>
+<li><p>Evaluate the model’s performance on the held-out observation.</p></li>
+</ul>
+<p>One of the advantages of LOOCV is that because more data is used, there is lower variance.</p>
+</section>
+<section id="question-2-c" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-c">Question 2 c:</h3>
+<p>The main disadvantage of LOOCV that I have seen in this HW is the amount of time for computer. I think on EXTREMLY LARGE data sets, compute time will be long.</p>
+</section>
+<section id="question-2-d" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-d">Question 2 d:</h3>
+<p>Both validation set approach and LOOCV can be applied to any supervised learning algorithm, not just k-Nearest Neighbors. Like, linear regression.</p>
+</section>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Needed libraries</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)<span class="co">#For KNN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)<span class="co">#For visualizations also required by caret</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)<span class="co">#For graphs also required by caret</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Data initialization and preprocessing</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Ionosphere"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Ionosphere)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> V1      V2            V3                V4                 V5         
+ 0: 38   0:351   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.0000  
+ 1:313           1st Qu.: 0.4721   1st Qu.:-0.06474   1st Qu.: 0.4127  
+                 Median : 0.8711   Median : 0.01631   Median : 0.8092  
+                 Mean   : 0.6413   Mean   : 0.04437   Mean   : 0.6011  
+                 3rd Qu.: 1.0000   3rd Qu.: 0.19418   3rd Qu.: 1.0000  
+                 Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
+       V6                V7                V8                 V9          
+ Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.00000  
+ 1st Qu.:-0.0248   1st Qu.: 0.2113   1st Qu.:-0.05484   1st Qu.: 0.08711  
+ Median : 0.0228   Median : 0.7287   Median : 0.01471   Median : 0.68421  
+ Mean   : 0.1159   Mean   : 0.5501   Mean   : 0.11936   Mean   : 0.51185  
+ 3rd Qu.: 0.3347   3rd Qu.: 0.9692   3rd Qu.: 0.44567   3rd Qu.: 0.95324  
+ Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.00000  
+      V10                V11                V12                V13         
+ Min.   :-1.00000   Min.   :-1.00000   Min.   :-1.00000   Min.   :-1.0000  
+ 1st Qu.:-0.04807   1st Qu.: 0.02112   1st Qu.:-0.06527   1st Qu.: 0.0000  
+ Median : 0.01829   Median : 0.66798   Median : 0.02825   Median : 0.6441  
+ Mean   : 0.18135   Mean   : 0.47618   Mean   : 0.15504   Mean   : 0.4008  
+ 3rd Qu.: 0.53419   3rd Qu.: 0.95790   3rd Qu.: 0.48237   3rd Qu.: 0.9555  
+ Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.0000  
+      V14                V15               V16                V17         
+ Min.   :-1.00000   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.0000  
+ 1st Qu.:-0.07372   1st Qu.: 0.0000   1st Qu.:-0.08170   1st Qu.: 0.0000  
+ Median : 0.03027   Median : 0.6019   Median : 0.00000   Median : 0.5909  
+ Mean   : 0.09341   Mean   : 0.3442   Mean   : 0.07113   Mean   : 0.3819  
+ 3rd Qu.: 0.37486   3rd Qu.: 0.9193   3rd Qu.: 0.30897   3rd Qu.: 0.9357  
+ Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
+      V18                 V19               V20                V21         
+ Min.   :-1.000000   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.0000  
+ 1st Qu.:-0.225690   1st Qu.: 0.0000   1st Qu.:-0.23467   1st Qu.: 0.0000  
+ Median : 0.000000   Median : 0.5762   Median : 0.00000   Median : 0.4991  
+ Mean   :-0.003617   Mean   : 0.3594   Mean   :-0.02402   Mean   : 0.3367  
+ 3rd Qu.: 0.195285   3rd Qu.: 0.8993   3rd Qu.: 0.13437   3rd Qu.: 0.8949  
+ Max.   : 1.000000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
+      V22                 V23               V24                V25         
+ Min.   :-1.000000   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.0000  
+ 1st Qu.:-0.243870   1st Qu.: 0.0000   1st Qu.:-0.36689   1st Qu.: 0.0000  
+ Median : 0.000000   Median : 0.5318   Median : 0.00000   Median : 0.5539  
+ Mean   : 0.008296   Mean   : 0.3625   Mean   :-0.05741   Mean   : 0.3961  
+ 3rd Qu.: 0.188760   3rd Qu.: 0.9112   3rd Qu.: 0.16463   3rd Qu.: 0.9052  
+ Max.   : 1.000000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
+      V26                V27               V28                V29         
+ Min.   :-1.00000   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.0000  
+ 1st Qu.:-0.33239   1st Qu.: 0.2864   1st Qu.:-0.44316   1st Qu.: 0.0000  
+ Median :-0.01505   Median : 0.7082   Median :-0.01769   Median : 0.4966  
+ Mean   :-0.07119   Mean   : 0.5416   Mean   :-0.06954   Mean   : 0.3784  
+ 3rd Qu.: 0.15676   3rd Qu.: 0.9999   3rd Qu.: 0.15354   3rd Qu.: 0.8835  
+ Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
+      V30                V31               V32                 V33         
+ Min.   :-1.00000   Min.   :-1.0000   Min.   :-1.000000   Min.   :-1.0000  
+ 1st Qu.:-0.23689   1st Qu.: 0.0000   1st Qu.:-0.242595   1st Qu.: 0.0000  
+ Median : 0.00000   Median : 0.4428   Median : 0.000000   Median : 0.4096  
+ Mean   :-0.02791   Mean   : 0.3525   Mean   :-0.003794   Mean   : 0.3494  
+ 3rd Qu.: 0.15407   3rd Qu.: 0.8576   3rd Qu.: 0.200120   3rd Qu.: 0.8138  
+ Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.000000   Max.   : 1.0000  
+      V34            Class    
+ Min.   :-1.00000   bad :126  
+ 1st Qu.:-0.16535   good:225  
+ Median : 0.00000             
+ Mean   : 0.01448             
+ 3rd Qu.: 0.17166             
+ Max.   : 1.00000             </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Ionosphere)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  V1 V2      V3       V4       V5       V6       V7       V8      V9      V10
+1  1  0 0.99539 -0.05889  0.85243  0.02306  0.83398 -0.37708 1.00000  0.03760
+2  1  0 1.00000 -0.18829  0.93035 -0.36156 -0.10868 -0.93597 1.00000 -0.04549
+3  1  0 1.00000 -0.03365  1.00000  0.00485  1.00000 -0.12062 0.88965  0.01198
+4  1  0 1.00000 -0.45161  1.00000  1.00000  0.71216 -1.00000 0.00000  0.00000
+5  1  0 1.00000 -0.02401  0.94140  0.06531  0.92106 -0.23255 0.77152 -0.16399
+6  1  0 0.02337 -0.00592 -0.09924 -0.11949 -0.00763 -0.11824 0.14706  0.06637
+      V11      V12     V13      V14      V15      V16      V17      V18
+1 0.85243 -0.17755 0.59755 -0.44945  0.60536 -0.38223  0.84356 -0.38542
+2 0.50874 -0.67743 0.34432 -0.69707 -0.51685 -0.97515  0.05499 -0.62237
+3 0.73082  0.05346 0.85443  0.00827  0.54591  0.00299  0.83775 -0.13644
+4 0.00000  0.00000 0.00000  0.00000 -1.00000  0.14516  0.54094 -0.39330
+5 0.52798 -0.20275 0.56409 -0.00712  0.34395 -0.27457  0.52940 -0.21780
+6 0.03786 -0.06302 0.00000  0.00000 -0.04572 -0.15540 -0.00343 -0.10196
+       V19      V20      V21      V22      V23      V24      V25      V26
+1  0.58212 -0.32192  0.56971 -0.29674  0.36946 -0.47357  0.56811 -0.51171
+2  0.33109 -1.00000 -0.13151 -0.45300 -0.18056 -0.35734 -0.20332 -0.26569
+3  0.75535 -0.08540  0.70887 -0.27502  0.43385 -0.12062  0.57528 -0.40220
+4 -1.00000 -0.54467 -0.69975  1.00000  0.00000  0.00000  1.00000  0.90695
+5  0.45107 -0.17813  0.05982 -0.35575  0.02309 -0.52879  0.03286 -0.65158
+6 -0.11575 -0.05414  0.01838  0.03669  0.01519  0.00888  0.03513 -0.01535
+       V27      V28      V29      V30      V31      V32      V33      V34 Class
+1  0.41078 -0.46168  0.21266 -0.34090  0.42267 -0.54487  0.18641 -0.45300  good
+2 -0.20468 -0.18401 -0.19040 -0.11593 -0.16626 -0.06288 -0.13738 -0.02447   bad
+3  0.58984 -0.22145  0.43100 -0.17365  0.60436 -0.24180  0.56045 -0.38238  good
+4  0.51613  1.00000  1.00000 -0.20099  0.25682  1.00000 -0.32382  1.00000   bad
+5  0.13290 -0.53206  0.02431 -0.62197 -0.05707 -0.59573 -0.04608 -0.65697  good
+6 -0.03240  0.09223 -0.07859  0.00732  0.00000  0.00000 -0.00039  0.12011   bad</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> Ionosphere</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">###About the data: 351 Observations and 34 Independent Variables(Removed one)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">###Last column in the data is categorical variable called Class: good/bad</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, <span class="at">select =</span> <span class="sc">-</span>V2) <span class="co">#Removed V2 bc all 0's</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   351 obs. of  34 variables:
+ $ V1   : Factor w/ 2 levels "0","1": 2 2 2 2 2 2 2 1 2 2 ...
+ $ V3   : num  0.995 1 1 1 1 ...
+ $ V4   : num  -0.0589 -0.1883 -0.0336 -0.4516 -0.024 ...
+ $ V5   : num  0.852 0.93 1 1 0.941 ...
+ $ V6   : num  0.02306 -0.36156 0.00485 1 0.06531 ...
+ $ V7   : num  0.834 -0.109 1 0.712 0.921 ...
+ $ V8   : num  -0.377 -0.936 -0.121 -1 -0.233 ...
+ $ V9   : num  1 1 0.89 0 0.772 ...
+ $ V10  : num  0.0376 -0.0455 0.012 0 -0.164 ...
+ $ V11  : num  0.852 0.509 0.731 0 0.528 ...
+ $ V12  : num  -0.1776 -0.6774 0.0535 0 -0.2028 ...
+ $ V13  : num  0.598 0.344 0.854 0 0.564 ...
+ $ V14  : num  -0.44945 -0.69707 0.00827 0 -0.00712 ...
+ $ V15  : num  0.605 -0.517 0.546 -1 0.344 ...
+ $ V16  : num  -0.38223 -0.97515 0.00299 0.14516 -0.27457 ...
+ $ V17  : num  0.844 0.055 0.838 0.541 0.529 ...
+ $ V18  : num  -0.385 -0.622 -0.136 -0.393 -0.218 ...
+ $ V19  : num  0.582 0.331 0.755 -1 0.451 ...
+ $ V20  : num  -0.3219 -1 -0.0854 -0.5447 -0.1781 ...
+ $ V21  : num  0.5697 -0.1315 0.7089 -0.6997 0.0598 ...
+ $ V22  : num  -0.297 -0.453 -0.275 1 -0.356 ...
+ $ V23  : num  0.3695 -0.1806 0.4339 0 0.0231 ...
+ $ V24  : num  -0.474 -0.357 -0.121 0 -0.529 ...
+ $ V25  : num  0.5681 -0.2033 0.5753 1 0.0329 ...
+ $ V26  : num  -0.512 -0.266 -0.402 0.907 -0.652 ...
+ $ V27  : num  0.411 -0.205 0.59 0.516 0.133 ...
+ $ V28  : num  -0.462 -0.184 -0.221 1 -0.532 ...
+ $ V29  : num  0.2127 -0.1904 0.431 1 0.0243 ...
+ $ V30  : num  -0.341 -0.116 -0.174 -0.201 -0.622 ...
+ $ V31  : num  0.4227 -0.1663 0.6044 0.2568 -0.0571 ...
+ $ V32  : num  -0.5449 -0.0629 -0.2418 1 -0.5957 ...
+ $ V33  : num  0.1864 -0.1374 0.5605 -0.3238 -0.0461 ...
+ $ V34  : num  -0.453 -0.0245 -0.3824 1 -0.657 ...
+ $ Class: Factor w/ 2 levels "bad","good": 2 1 2 1 2 1 2 1 2 1 ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here are some graphical summaries of the Ionosphere data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>V7, <span class="at">main =</span> <span class="st">"Histogram of V7 Occurance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HW2index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>V10, <span class="at">main =</span> <span class="st">"Histogram of V10 Occurance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HW2index_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(V7 <span class="sc">~</span> Class, <span class="at">data =</span> df, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>), <span class="at">main =</span> <span class="st">"Boxplot of V7 by Class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HW2index_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(V10 <span class="sc">~</span> Class, <span class="at">data =</span> df, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>), <span class="at">main =</span> <span class="st">"Boxplot of V10 by Class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HW2index_files/figure-html/unnamed-chunk-3-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here are the corresponding numerical summaries </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>V7[df<span class="sc">$</span>Class <span class="sc">==</span> <span class="st">"good"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-0.2222  0.5178  0.8159  0.7159  0.9603  1.0000 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>V7[df<span class="sc">$</span>Class <span class="sc">==</span> <span class="st">"bad"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-1.000000  0.000000  0.007185  0.253984  1.000000  1.000000 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>V10[df<span class="sc">$</span>Class <span class="sc">==</span> <span class="st">"good"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-0.51171 -0.04286  0.04317  0.22496  0.56830  1.00000 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>V10[df<span class="sc">$</span>Class <span class="sc">==</span> <span class="st">"bad"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-1.00000 -0.06653  0.00000  0.10346  0.50075  1.00000 </code></pre>
+</div>
+</div>
+<p>There is some skewness in the histogram of V7 to the left direction.</p>
+<p>As for the box plot of V10 the two plots seem to be roughly identical and this follows its histogram which looks approximately normally distributed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4323</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Data slicing</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>intrainQ3 <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> df<span class="sc">$</span>Class, <span class="at">p=</span> <span class="fl">0.7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>trainingQ3 <span class="ot">&lt;-</span>df[intrainQ3,]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>testingQ3 <span class="ot">&lt;-</span> df[<span class="sc">-</span>intrainQ3,]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#checking to see if our dimensions add up </span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(trainingQ3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 247  34</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(testingQ3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 104  34</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">"cv"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Class <span class="sc">~</span> .,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">"knn"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControl,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> df)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>k-Nearest Neighbors 
+
+351 samples
+ 33 predictor
+  2 classes: 'bad', 'good' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold) 
+Summary of sample sizes: 281, 280, 281, 281, 281 
+Resampling results across tuning parameters:
+
+  k   Accuracy   Kappa    
+   1  0.8461569  0.6409977
+   2  0.8375855  0.6208973
+   3  0.8375855  0.6155820
+   4  0.8461167  0.6360559
+   5  0.8462374  0.6359032
+   6  0.8348491  0.6049333
+   7  0.8319920  0.6004563
+   8  0.8206036  0.5691947
+   9  0.8320322  0.6002482
+  10  0.8263179  0.5847849
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was k = 5.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>test_predictionQ3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata=</span> testingQ3)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>test_predictionQ3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] good good good bad  good bad  good good good good good good good good good
+ [16] good bad  good bad  good bad  bad  good good good good good bad  good good
+ [31] good bad  bad  bad  good good good good bad  good good good bad  good good
+ [46] bad  good good bad  good good bad  good bad  bad  good bad  good good bad 
+ [61] good good good good bad  good good bad  good bad  good bad  good good good
+ [76] good good good good good good good good bad  good good good good good good
+ [91] good good good good good good good good good good good good good good
+Levels: bad good</code></pre>
+</div>
+</div>
+<p>Test error fo k = 5 was found to be the best at roughly 15.38% in comparison to k = 7, 16.8% and k = 1, 15.39%.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(test_predictionQ3, testingQ3<span class="sc">$</span>Class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction bad good
+      bad   22    2
+      good  15   65
+                                          
+               Accuracy : 0.8365          
+                 95% CI : (0.7512, 0.9018)
+    No Information Rate : 0.6442          
+    P-Value [Acc &gt; NIR] : 1.185e-05       
+                                          
+                  Kappa : 0.613           
+                                          
+ Mcnemar's Test P-Value : 0.003609        
+                                          
+            Sensitivity : 0.5946          
+            Specificity : 0.9701          
+         Pos Pred Value : 0.9167          
+         Neg Pred Value : 0.8125          
+             Prevalence : 0.3558          
+         Detection Rate : 0.2115          
+   Detection Prevalence : 0.2308          
+      Balanced Accuracy : 0.7824          
+                                          
+       'Positive' Class : bad             
+                                          </code></pre>
+</div>
+</div>
+<p>What is the confusion matrix saying?</p>
+<p>There is an 83.65% accuracy in this model.</p>
+<p>The model hallucinated 15 bad as good and 2 good as bad, in which this model is better at determining what is good opposed to bad.</p>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Data initialization and preprocessing</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Auto"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mpg          cylinders      displacement     horsepower        weight    
+ Min.   : 9.00   Min.   :3.000   Min.   : 68.0   Min.   : 46.0   Min.   :1613  
+ 1st Qu.:17.00   1st Qu.:4.000   1st Qu.:105.0   1st Qu.: 75.0   1st Qu.:2225  
+ Median :22.75   Median :4.000   Median :151.0   Median : 93.5   Median :2804  
+ Mean   :23.45   Mean   :5.472   Mean   :194.4   Mean   :104.5   Mean   :2978  
+ 3rd Qu.:29.00   3rd Qu.:8.000   3rd Qu.:275.8   3rd Qu.:126.0   3rd Qu.:3615  
+ Max.   :46.60   Max.   :8.000   Max.   :455.0   Max.   :230.0   Max.   :5140  
+                                                                               
+  acceleration        year           origin                      name    
+ Min.   : 8.00   Min.   :70.00   Min.   :1.000   amc matador       :  5  
+ 1st Qu.:13.78   1st Qu.:73.00   1st Qu.:1.000   ford pinto        :  5  
+ Median :15.50   Median :76.00   Median :1.000   toyota corolla    :  5  
+ Mean   :15.54   Mean   :75.98   Mean   :1.577   amc gremlin       :  4  
+ 3rd Qu.:17.02   3rd Qu.:79.00   3rd Qu.:2.000   amc hornet        :  4  
+ Max.   :24.80   Max.   :82.00   Max.   :3.000   chevrolet chevette:  4  
+                                                 (Other)           :365  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from package:ggplot2:
+
+    mpg</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>mpg01 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>( mpg <span class="sc">&gt;</span> <span class="fu">median</span>(mpg), <span class="at">yes =</span> <span class="dv">1</span>, <span class="at">no =</span> <span class="dv">0</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>newAuto <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Auto, mpg01)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(newAuto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   392 obs. of  10 variables:
+ $ mpg         : num  18 15 18 16 17 15 14 14 14 15 ...
+ $ cylinders   : num  8 8 8 8 8 8 8 8 8 8 ...
+ $ displacement: num  307 350 318 304 302 429 454 440 455 390 ...
+ $ horsepower  : num  130 165 150 150 140 198 220 215 225 190 ...
+ $ weight      : num  3504 3693 3436 3433 3449 ...
+ $ acceleration: num  12 11.5 11 12 10.5 10 9 8.5 10 8.5 ...
+ $ year        : num  70 70 70 70 70 70 70 70 70 70 ...
+ $ origin      : num  1 1 1 1 1 1 1 1 1 1 ...
+ $ name        : Factor w/ 304 levels "amc ambassador brougham",..: 49 36 231 14 161 141 54 223 241 2 ...
+ $ mpg01       : num  0 0 0 0 0 0 0 0 0 0 ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scatter plot matrix</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(newAuto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HW2index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Scatter plot matrix:</p>
+<p>Of the variables in the data set Auto, I found cylinders, weight, displacement, horsepower, acceleration and the age of the car to be among the most influencing of Mpg01.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here we standardized the data, since knn works on distance we don't want anything skewed</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#cbind makes a matrix, apply, applies the scale (standardize) to the columns 2 not the rows 1</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>newAuto <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mpg01, <span class="fu">apply</span>(<span class="fu">cbind</span>(cylinders, weight, displacement, horsepower, acceleration), <span class="dv">2</span>, scale), year)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(newAuto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   392 obs. of  7 variables:
+ $ mpg01       : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ cylinders   : num  1.48 1.48 1.48 1.48 1.48 ...
+ $ weight      : num  0.62 0.842 0.54 0.536 0.555 ...
+ $ displacement: num  1.08 1.49 1.18 1.05 1.03 ...
+ $ horsepower  : num  0.663 1.573 1.183 1.183 0.923 ...
+ $ acceleration: num  -1.28 -1.46 -1.65 -1.28 -1.83 ...
+ $ year        : num  70 70 70 70 70 70 70 70 70 70 ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Splitting the data 70:30</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>intrainQ4 <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> mpg01, <span class="at">p=</span> <span class="fl">0.7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>trainingQ4 <span class="ot">&lt;-</span>newAuto[intrainQ4,]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>testingQ4 <span class="ot">&lt;-</span> newAuto[<span class="sc">-</span>intrainQ4,]</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(trainingQ4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 276   7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(testingQ4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 116   7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>trControlQ4 <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">"cv"</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>fitQ4 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(mpg01) <span class="sc">~</span> .,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">"knn"</span>,</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControlQ4,</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> newAuto)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>fitQ4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>k-Nearest Neighbors 
+
+392 samples
+  6 predictor
+  2 classes: '0', '1' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold) 
+Summary of sample sizes: 314, 313, 314, 313, 314 
+Resampling results across tuning parameters:
+
+  k   Accuracy   Kappa    
+   1  0.9209672  0.8419133
+   2  0.9210321  0.8420609
+   3  0.9260954  0.8522152
+   4  0.9108731  0.8217583
+   5  0.9133723  0.8268230
+   6  0.9159364  0.8319125
+   7  0.9185329  0.8371063
+   8  0.9185005  0.8370503
+   9  0.9236611  0.8473627
+  10  0.9236611  0.8473529
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was k = 3.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>test_predictionQ4 <span class="ot">&lt;-</span> <span class="fu">predict</span>(fitQ4, <span class="at">newdata=</span> testingQ4)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>test_predictionQ4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0
+ [38] 1 0 0 1 1 0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 1 1 1 1 0 1 0 1 0 0 1 1 0 1 0 0
+ [75] 1 0 0 0 1 1 1 1 0 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+[112] 1 1 1 1 1
+Levels: 0 1</code></pre>
+</div>
+</div>
+<p>Among the best K-Values, k = 3 was found to have a (1-0.926) 7.4% error rate.</p>
+<p>I unfortunately already scaled my data but here is why: Because KNN works on distance, certain variables will have disproportionate weight. We needed to standardize the variables so that the distance between data points is not skewed. So scaling each feature to have a mean of 0 and a standard deviation of 1 should help.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(test_predictionQ4, <span class="fu">as.factor</span>(testingQ4<span class="sc">$</span>mpg01))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction  0  1
+         0 54  1
+         1  4 57
+                                          
+               Accuracy : 0.9569          
+                 95% CI : (0.9023, 0.9859)
+    No Information Rate : 0.5             
+    P-Value [Acc &gt; NIR] : &lt;2e-16          
+                                          
+                  Kappa : 0.9138          
+                                          
+ Mcnemar's Test P-Value : 0.3711          
+                                          
+            Sensitivity : 0.9310          
+            Specificity : 0.9828          
+         Pos Pred Value : 0.9818          
+         Neg Pred Value : 0.9344          
+             Prevalence : 0.5000          
+         Detection Rate : 0.4655          
+   Detection Prevalence : 0.4741          
+      Balanced Accuracy : 0.9569          
+                                          
+       'Positive' Class : 0               
+                                          </code></pre>
+</div>
+</div>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mpg cylinders displacement horsepower weight acceleration year origin
+1  18         8          307        130   3504         12.0   70      1
+2  15         8          350        165   3693         11.5   70      1
+3  18         8          318        150   3436         11.0   70      1
+4  16         8          304        150   3433         12.0   70      1
+5  17         8          302        140   3449         10.5   70      1
+6  15         8          429        198   4341         10.0   70      1
+                       name
+1 chevrolet chevelle malibu
+2         buick skylark 320
+3        plymouth satellite
+4             amc rebel sst
+5               ford torino
+6          ford galaxie 500</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mpg          cylinders      displacement     horsepower        weight    
+ Min.   : 9.00   Min.   :3.000   Min.   : 68.0   Min.   : 46.0   Min.   :1613  
+ 1st Qu.:17.00   1st Qu.:4.000   1st Qu.:105.0   1st Qu.: 75.0   1st Qu.:2225  
+ Median :22.75   Median :4.000   Median :151.0   Median : 93.5   Median :2804  
+ Mean   :23.45   Mean   :5.472   Mean   :194.4   Mean   :104.5   Mean   :2978  
+ 3rd Qu.:29.00   3rd Qu.:8.000   3rd Qu.:275.8   3rd Qu.:126.0   3rd Qu.:3615  
+ Max.   :46.60   Max.   :8.000   Max.   :455.0   Max.   :230.0   Max.   :5140  
+                                                                               
+  acceleration        year           origin                      name    
+ Min.   : 8.00   Min.   :70.00   Min.   :1.000   amc matador       :  5  
+ 1st Qu.:13.78   1st Qu.:73.00   1st Qu.:1.000   ford pinto        :  5  
+ Median :15.50   Median :76.00   Median :1.000   toyota corolla    :  5  
+ Mean   :15.54   Mean   :75.98   Mean   :1.577   amc gremlin       :  4  
+ 3rd Qu.:17.02   3rd Qu.:79.00   3rd Qu.:2.000   amc hornet        :  4  
+ Max.   :24.80   Max.   :82.00   Max.   :3.000   chevrolet chevette:  4  
+                                                 (Other)           :365  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>trControlQ5 <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">"LOOCV"</span>, <span class="at">number  =</span> <span class="dv">5</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>newAutoQ5 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Auto, mpg01)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>fitQ5 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(mpg01) <span class="sc">~</span> .,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">method     =</span> <span class="st">"knn"</span>,</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">trControl  =</span> trControlQ5,</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">data       =</span> newAutoQ5)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>fitQ5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>k-Nearest Neighbors 
+
+392 samples
+  9 predictor
+  2 classes: '0', '1' 
+
+No pre-processing
+Resampling: Leave-One-Out Cross-Validation 
+Summary of sample sizes: 391, 391, 391, 391, 391, 391, ... 
+Resampling results across tuning parameters:
+
+  k   Accuracy   Kappa    
+   1  0.8698980  0.7397959
+   2  0.8724490  0.7448980
+   3  0.8877551  0.7755102
+   4  0.8801020  0.7602041
+   5  0.8826531  0.7653061
+   6  0.8750000  0.7500000
+   7  0.8724490  0.7448980
+   8  0.8877551  0.7755102
+   9  0.8750000  0.7500000
+  10  0.8673469  0.7346939
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was k = 8.</code></pre>
+</div>
+</div>
+<p>Before the scaling, the approach towards validation that has proven to be better is a scaled k-cross validation approach. The accuracy of the best performing k values from each approach were ascertain, and k-cross validation prevailed, with a test error rate of (1-.926) = 7.4% in comparison to a non scaled LOOCV test error rate where k = 8 of(1 - .888) 11.2%</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>newAutoQ5Scaled <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mpg01, <span class="fu">apply</span>(<span class="fu">cbind</span>(cylinders, weight, displacement, horsepower, acceleration), <span class="dv">2</span>, scale), year)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>fitQ5 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(mpg01) <span class="sc">~</span> .,</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">method     =</span> <span class="st">"knn"</span>,</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">trControl  =</span> trControlQ5,</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">data       =</span> newAutoQ5Scaled)</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>fitQ5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>k-Nearest Neighbors 
+
+392 samples
+  6 predictor
+  2 classes: '0', '1' 
+
+No pre-processing
+Resampling: Leave-One-Out Cross-Validation 
+Summary of sample sizes: 391, 391, 391, 391, 391, 391, ... 
+Resampling results across tuning parameters:
+
+  k   Accuracy   Kappa    
+   1  0.9234694  0.8469388
+   2  0.9081633  0.8163265
+   3  0.9209184  0.8418367
+   4  0.9107143  0.8214286
+   5  0.9132653  0.8265306
+   6  0.9158163  0.8316327
+   7  0.9158163  0.8316327
+   8  0.9234694  0.8469388
+   9  0.9234694  0.8469388
+  10  0.9183673  0.8367347
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was k = 9.</code></pre>
+</div>
+</div>
+<p>After having scaled the data it seems that LOOCV performed better than its un-scaled version with a k value = 9 yielding a test error rate of (1-.9235) 7.7% but exceptionally close to a scaled version of k - cross validation with a difference of approximately 0.3%.</p>
+<p>In this case it would be better to do the k - cross validation approach as there is less compute time, as far as trusting which validation approach more, that would also be k-cross validation but it depends on the use case of your machine learning model.</p>
+<p>PS: I couldnt figure out how to display the code but prevent evaluation, I am sorry.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

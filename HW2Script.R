@@ -10,7 +10,6 @@ head(Ionosphere)
 df <- Ionosphere
 ###About the data: 351 Observations and 34 Independent Variables(Removed one)
 ###Last column in the data is categorical variable called Class: good/bad
-
 df <- subset(df, select = -V2) #Removed V2 bc all 0's
 str(df)
 
@@ -68,9 +67,7 @@ pairs(newAuto)
 #cbind makes a matrix, apply, applies the scale (standardize) to the columns 2 not the rows 1
 newAuto <- data.frame(mpg01, apply(cbind(cylinders, weight, displacement, horsepower, acceleration), 
                                 2, scale), year)
-
 str(newAuto)
-set.seed(1)
 
 intrainQ4 <- createDataPartition(y = mpg01, p= 0.7, list = FALSE)
 trainingQ4 <-newAuto[intrainQ4,]
@@ -78,6 +75,8 @@ testingQ4 <- newAuto[-intrainQ4,]
 
 dim(trainingQ4)
 dim(testingQ4)
+
+set.seed(1)
 
 trControlQ4 <- trainControl(method  = "cv",
                           number  = 5)
@@ -110,9 +109,9 @@ fitQ5 <- train(as.factor(mpg01) ~ .,
                data       = newAutoQ5)
 fitQ5
 
+set.seed(1)
 newAutoQ5Scaled <- data.frame(mpg01, apply(cbind(cylinders, weight, displacement, horsepower, acceleration), 
                                    2, scale), year)
-
 fitQ5 <- train(as.factor(mpg01) ~ .,
                method     = "knn",
                trControl  = trControlQ5,

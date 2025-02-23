@@ -1,0 +1,285 @@
+---
+title: "HW 2 Stats Learn, Date: 02/20/25"
+author: "Steafan Steinocher ID 1554129"
+format: pdf
+editor: visual
+---
+
+## The following Question 1 is in regards to this table:
+
+| Obs | X1  | X2  | X3  | Y    |
+|-----|-----|-----|-----|------|
+| 1   | 1   | 2   | -1  | Blue |
+| 2   | 1   | 0   | 3   | Blue |
+| 3   | 0   | 3   | 0   | Red  |
+| 4   | 0   | 2   | -1  | Red  |
+| 5   | 2   | 0   | -1  | Blue |
+| 6   | 1   | 4   | 1   | Red  |
+
+### Question 1a:
+
+The nearest neighbor to any K = 1 observation is the observation itself so in this case Blue with a misclassification rate of 0%, and this would be the case for each of the other observations.
+
+### Question 1b:
+
+Where K = 3, there is a misclassification of 1/6.
+
+|     |      |      |      |      |
+|-----|------|------|------|------|
+| Obs | X1   | X2   | X3   | Y    |
+| 1   | Blue | Red  | Red  | Red  |
+| 2   | Blue | Blue | Red  | Blue |
+| 3   | Red  | Red  | Blue | Red  |
+| 4   | Red  | Blue | Red  | Red  |
+| 5   | Blue | Blue | Red  | Blue |
+| 6   | Red  | Red  | Blue | Red  |
+
+### Question 1c:
+
+#### Question 1 c i:
+
+Because our point of interest is (0,0,0) the distance of each observation from our point of interest is simply the magnitude of the observation. 
+
+|     |                       |
+|-----|-----------------------|
+| Obs | Distance from (0,0,0) |
+| 1   | $\sqrt{6}$            |
+| 2   | $\sqrt{10}$           |
+| 3   | 3                     |
+| 4   | $\sqrt{5}$            |
+| 5   | $\sqrt{5}$            |
+| 6   | $\sqrt{18}$           |
+
+#### Question 1 c ii:
+
+-   For K = 1 the nearest neighbor prediction could be Red or Blue as they are equidistant from the initial point.
+
+#### Question 1 c iii:
+
+-   For K = 3 the nearest neighbor prediction would be Blue as the majority of points nearest to our point of interest are Blue.
+
+#### Question 1 c iv:
+
+-   For K = 5 the nearest neighbor prediction would be Blue because the majority of points nearest to our point of interest are Blue.
+
+## Question 2:
+
+### Question 2 a:
+
+The validation set approach splits the data set into two parts.
+
+-   Training set which is often seen as 70% of the data set.
+
+-   Validation set, which is used to evaluate the models performance which is often roughly 30% of the data set.
+
+A disadvantage to the validation set approach is Data inefficiency, not as much data is used to train a model that adopts this approach.
+
+### Question 2 b:
+
+Leave one out cross validation works as follows:
+
+-   Treat that observation as the validation set.
+
+-   Train the model on the remaining (n-1) observations, hence leave one out.
+
+-   Evaluate the model’s performance on the held-out observation.
+
+One of the advantages of LOOCV is that because more data is used, there is lower variance.
+
+### Question 2 c:
+
+The main disadvantage of LOOCV that I have seen in this HW is the amount of time for computer. I think on EXTREMLY LARGE data sets, compute time will be long.
+
+### Question 2 d:
+
+Both validation set approach and LOOCV can be applied to any supervised learning algorithm, not just k-Nearest Neighbors. Like, linear regression.
+
+## Question 3:
+
+```{r}
+#|eval: false
+#Needed libraries
+library(mlbench)
+library(ISLR)
+library(caret)#For KNN
+library(lattice)#For visualizations also required by caret
+library(ggplot2)#For graphs also required by caret
+```
+
+```{r}
+#|eval: false
+#Data initialization and preprocessing
+data("Ionosphere")
+summary(Ionosphere)
+head(Ionosphere)
+df <- Ionosphere
+###About the data: 351 Observations and 34 Independent Variables(Removed one)
+###Last column in the data is categorical variable called Class: good/bad
+df <- subset(df, select = -V2) #Removed V2 bc all 0's
+str(df)
+
+```
+
+```{r}
+#Here are some graphical summaries of the Ionosphere data
+hist(df$V7, main = "Histogram of V7 Occurance")
+hist(df$V10, main = "Histogram of V10 Occurance")
+boxplot(V7 ~ Class, data = df, col = c("blue", "green"), main = "Boxplot of V7 by Class")
+boxplot(V10 ~ Class, data = df, col = c("blue", "green"), main = "Boxplot of V10 by Class")
+
+#Here are the corresponding numerical summaries 
+summary(df$V7[df$Class == "good"])
+summary(df$V7[df$Class == "bad"])
+summary(df$V10[df$Class == "good"])
+summary(df$V10[df$Class == "bad"])
+
+```
+
+There is some skewness in the histogram of V7 to the left direction.
+
+As for the box plot of V10 the two plots seem to be roughly identical and this follows its histogram which looks approximately normally distributed.
+
+```{r}
+set.seed(4323)
+#Data slicing
+intrainQ3 <- createDataPartition(y = df$Class, p= 0.7, list = FALSE)
+trainingQ3 <-df[intrainQ3,]
+testingQ3 <- df[-intrainQ3,]
+
+
+#checking to see if our dimensions add up 
+dim(trainingQ3)
+dim(testingQ3)
+
+```
+
+```{r}
+#
+trControl <- trainControl(method  = "cv",
+                          number  = 5)
+fit <- train(Class ~ .,
+             method     = "knn",
+             trControl  = trControl,
+             tuneGrid   = expand.grid(k = 1:10),
+             data       = df)
+fit
+
+test_predictionQ3 <- predict(fit, newdata= testingQ3)
+test_predictionQ3
+```
+
+Test error fo k = 5 was found to be the best at roughly 15.38% in comparison to k = 7, 16.8% and k = 1, 15.39%.
+
+```{r}
+confusionMatrix(test_predictionQ3, testingQ3$Class)
+
+```
+
+What is the confusion matrix saying?
+
+There is an 83.65% accuracy in this model.
+
+The model hallucinated 15 bad as good and 2 good as bad, in which this model is better at determining what is good opposed to bad.
+
+## Question 4:
+
+```{r}
+#Data initialization and preprocessing
+data("Auto")
+summary(Auto)
+attach(Auto)
+mpg01 <- ifelse( mpg > median(mpg), yes = 1, no = 0)
+newAuto <- data.frame(Auto, mpg01)
+str(newAuto)
+```
+
+```{r}
+#Scatter plot matrix
+pairs(newAuto)
+```
+
+Scatter plot matrix:
+
+Of the variables in the data set Auto, I found cylinders, weight, displacement, horsepower, acceleration and the age of the car to be among the most influencing of Mpg01.
+
+```{r}
+#Here we standardized the data, since knn works on distance we don't want anything skewed
+#cbind makes a matrix, apply, applies the scale (standardize) to the columns 2 not the rows 1
+newAuto <- data.frame(mpg01, apply(cbind(cylinders, weight, displacement, horsepower, acceleration), 2, scale), year)
+str(newAuto)
+```
+
+```{r}
+#Splitting the data 70:30
+intrainQ4 <- createDataPartition(y = mpg01, p= 0.7, list = FALSE)
+trainingQ4 <-newAuto[intrainQ4,]
+testingQ4 <- newAuto[-intrainQ4,]
+
+dim(trainingQ4)
+dim(testingQ4)
+```
+
+```{r}
+set.seed(1)
+
+trControlQ4 <- trainControl(method  = "cv",
+                          number  = 5)
+fitQ4 <- train(as.factor(mpg01) ~ .,
+             method     = "knn",
+             trControl  = trControlQ4,
+             tuneGrid   = expand.grid(k = 1:10),
+             data       = newAuto)
+fitQ4
+
+test_predictionQ4 <- predict(fitQ4, newdata= testingQ4)
+test_predictionQ4
+```
+
+Among the best K-Values, k = 3 was found to have a (1-0.926) 7.4% error rate.
+
+I unfortunately already scaled my data but here is why: Because KNN works on distance, certain variables will have disproportionate weight. We needed to standardize the variables so that the distance between data points is not skewed. So scaling each feature to have a mean of 0 and a standard deviation of 1 should help.
+
+```{r}
+confusionMatrix(test_predictionQ4, as.factor(testingQ4$mpg01))
+
+```
+
+## Question 5:
+
+```{r}
+head(Auto)
+summary(Auto)
+set.seed(1)
+```
+
+```{r}
+trControlQ5 <- trainControl(method  = "LOOCV", number  = 5)
+newAutoQ5 <- data.frame(Auto, mpg01)
+
+fitQ5 <- train(as.factor(mpg01) ~ .,
+               method     = "knn",
+               trControl  = trControlQ5,
+               tuneGrid   = expand.grid(k = 1:10),
+               data       = newAutoQ5)
+fitQ5
+```
+
+Before the scaling, the approach towards validation that has proven to be better is a scaled k-cross validation approach. The accuracy of the best performing k values from each approach were ascertain, and k-cross validation prevailed, with a test error rate of (1-.926) = 7.4% in comparison to a non scaled LOOCV test error rate where k = 8 of(1 - .888) 11.2%
+
+```{r}
+set.seed(1)
+newAutoQ5Scaled <- data.frame(mpg01, apply(cbind(cylinders, weight, displacement, horsepower, acceleration), 2, scale), year)
+
+fitQ5 <- train(as.factor(mpg01) ~ .,
+               method     = "knn",
+               trControl  = trControlQ5,
+               tuneGrid   = expand.grid(k = 1:10),
+               data       = newAutoQ5Scaled)
+fitQ5
+```
+
+After having scaled the data it seems that LOOCV performed better than its un-scaled version with a k value = 9 yielding a test error rate of (1-.9235) 7.7% but exceptionally close to a scaled version of k - cross validation with a difference of approximately 0.3%.
+
+In this case it would be better to do the k - cross validation approach as there is less compute time, as far as trusting which validation approach more, that would also be k-cross validation but it depends on the use case of your machine learning model.
+
+PS: I couldnt figure out how to display the code but prevent evaluation, I am sorry.
